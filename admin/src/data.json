@@ -1,0 +1,90 @@
+{
+  "users": [
+    {
+      "id": "1395381372",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": "1395381373",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": "1395381374",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": "1395381375",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": "1395381376",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": 1395381372,
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": 1395381372,
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": 1395381372,
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": 1395381372,
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": 1395381372,
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    }
+  ],
+  "blocked": [
+    {
+      "id": "1395381374",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    },
+    {
+      "id": "1395381372",
+      "is_bot": false,
+      "first_name": "Noob",
+      "username": "sastaa_engineer",
+      "language_code": "en"
+    }
+  ]
+}
