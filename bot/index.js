@@ -4,6 +4,18 @@ const { Telegraf } = require("telegraf");
 const { getUsers, getBlockedUsers, addUser } = require("./endpoints");
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const API_KEY = process.env.API_KEY;
+const express = require("express");
+const app = express();
+
+app.listen(3000, () => {
+  console.log("Server started on port 3000");
+});
+
+app.get("/", (req, res) => {
+  res.send(
+    "<h1>Hello, go to <a href = 'https://t.me/boss_weather_bot'>https://t.me/boss_weather_bot</a> to use the bot</h1>"
+  );
+});
 
 let allUsers;
 let blockedUsers;
