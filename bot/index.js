@@ -44,7 +44,12 @@ bot.command("start", async (ctx) => {
     );
     return;
   } else {
-    await addUser(ctx.from);
+    allUsers.push(ctx.from);
+    const updatedUsers = {
+      users: allUsers,
+      blocked: blockedUsers,
+    };
+    await addUser(updatedUsers);
     bot.telegram.sendMessage(
       ctx.chat.id,
       "Hello there! Welcome to the Weather updates telegram bot! \nYou can use following commands: \n \n /weather <city> : to know the current weather of the city with single word \n \n /weather <city_name> : to know the current weather of the city with multiple words \n \n /help : to know more about the bot",

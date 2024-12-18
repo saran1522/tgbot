@@ -11,7 +11,8 @@ function UserMangagement() {
         Subscribed Users
       </h2>
       <div className="p-4 max-md:px-0 flex flex-col gap-4 text-xl">
-        {users &&
+        {users?.length > 0 &&
+          blockedUsers?.length > 0 &&
           users?.map((user, ind) => {
             const isBlocked = Boolean(
               blockedUsers.find((blockedUser) => blockedUser.id === user.id)

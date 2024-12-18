@@ -1,17 +1,14 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import {
-  getUsers,
-  deleteUser,
-  blockUser,
-  getBlockedUsers,
-  unblockUser,
-} from "../endpoints";
+import { getUsers, userOperations } from "../endpoints";
 
 const UserContext = createContext();
 
 export default function UserProvider({ children }) {
-  const [users, setUsers] = useState([]);
-  const [blockedUsers, setBlockedUsers] = useState([]);
+  const [allUsers, setAllUsers] = useState(null);
+  const [users, setUsers] = useState(allUsers ? allUsers.users : []);
+  const [blockedUsers, setBlockedUsers] = useState(
+    allUsers ? allUsers.blocked : []
+  );
   const [currModal, setCurrModal] = useState("none");
   const [currUser, setCurrUser] = useState({});
   const [botSettings, setBotSettings] = useState({
@@ -44,43 +41,39 @@ export default function UserProvider({ children }) {
 
   const handleDeleteUser = async (id) => {
     console.log("deleting user", id);
-    await deleteUser(id);
-    const allUsers = await getUsers(id);
-    // console.log("after deleting ", allUsers);
-    setUsers(allUsers);
+    // setUsers((users) => users.filter((u) => u.id !== id));
+    setAllUsers((allUsers) => allUsers.users.filter((u) => u.id !== id));
   };
 
   const handleBlockUser = async (user) => {
     console.log("blocking user", user);
-    await blockUser(user);
-    const allUsers = await getBlockedUsers();
-    setBlockedUsers(allUsers);
+    // setBlockedUsers((blockedUsers) => [...blockedUsers, user]);
+    setAllUsers((allUsers) => allUsers.blocked.push(user));
   };
 
   const handleUnblockUser = async (user) => {
     console.log("unblocking user", user);
-    await unblockUser(user);
-    const allUsers = await getBlockedUsers();
-    setBlockedUsers(allUsers);
+    setAllUsers((allUsers) => allUsers.blocked.filter((u) => u.id !== user.id));
   };
 
   useEffect(() => {
     const fetchUsers = async () => {
       const users = await getUsers();
       console.log("initial user fetch", users);
-      setUsers(users);
+      setAllUsers(users);
+      setUsers(users.users);
+      setBlockedUsers(users.blocked);
     };
     fetchUsers();
   }, []);
 
   useEffect(() => {
-    const fetchBlockedUsers = async () => {
-      const users = await getBlockedUsers();
-      console.log("initial blocked user fetch", users);
-      setBlockedUsers(users);
-    };
-    fetchBlockedUsers();
-  }, []);
+    async function updateUsers() {
+      console.log("updating users");
+      await userOperations(allUsers);
+    }
+    updateUsers();
+  }, [allUsers]);
 
   return (
     <UserContext.Provider
